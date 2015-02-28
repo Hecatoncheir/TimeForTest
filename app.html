@@ -7,35 +7,78 @@
 </head>
 <body>
 
-<div id="app"></div>
+<div id="app">
+  <table id="timeTable"></table>
 
-<!--PopUp-->
-<div id="pop-up-outline"></div>
-<div id="pop-up">
-  <nav class="pop-up-tabs">
-    <a class="activate" href="#tab-service">Услуга</a>
-    <a href="#tab-client">Клиент</a>
-  </nav>
 
-  <div class="pop-up-tabs">
+  <!--PopUp-->
+  <div id="pop-up-outline"></div>
+  <div id="pop-up">
+    <nav class="pop-up-nav">
+      <a class="activate" href="#tab-service">Услуга</a>
+      <a href="#tab-client">Клиент</a>
+    </nav>
 
-    <!--Service-->
-    <div id="tab-service">
-      <form action="">
+    <div class="pop-up-tabs">
 
-      </form>
-    </div>
+      <!--Service-->
+      <div id="tab-service">
+        <form action="">
 
-    <!--Client-->
-    <div id="tab-client">
-      <form action="">
+          <i class="icon service-type-icon"></i>
+          <select name="serviceType">
+            <option value="hair">Волосы</option>
+            <option value="notHair">Не волосы</option>
+          </select>
 
-      </form>
+          <i class="icon haircut-icon"></i>
+          <select name="haircut">
+            <option value="hair">Женская стрижка</option>
+            <option value="notHair">Мужская стрижка</option>
+          </select>
+
+          <i class="icon for-client-icon"><img src="assets/images/ava.png" alt=""/></i>
+          <select name="forClient">
+            <option value="Tamara-Smolnova">Тамара Смольнова</option>
+            <option value="Maria-Petrova">Мария Петрова</option>
+          </select>
+
+          <input type="search" placeholder="Найти клиента"/>
+
+          <div id="time-for-date">
+
+            <div id="time-start-group">
+              <i class="icon time-start-icon"></i>
+              <label for="time-start">Начало</label>
+              <select id="time-start" name="time-start"></select>
+            </div>
+
+            <div id="time-end-group">
+              <label for="time-end">Окончание</label>
+              <select id="time-end" name="time-end"></select>
+            </div>
+
+          </div>
+
+          <input type="submit" value="Сохранить бронирование"/>
+
+        </form>
+      </div>
+
+      <!--Client-->
+      <div id="tab-client">
+        <form action="">
+
+        </form>
+      </div>
+
     </div>
 
   </div>
 
-</div>
+
+</div> <!--end app-->
+
 
 <script src="assets/scripts/app.js"></script>
 </body>
