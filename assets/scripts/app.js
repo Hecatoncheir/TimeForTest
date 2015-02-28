@@ -161,6 +161,8 @@
 
     addNavigationTabsEvents();
     makeTimeSelectors(eventData);
+    makeNamesOfClients();
+
 
     popUpOutline.onclick = function(event){
       this.style.display = 'none';
@@ -168,8 +170,49 @@
     }
   }
 
-  //
-  //
+  //Make clients name options for select
+  function makeNamesOfClients(){
+    var selectClients,
+        baseAvaSource,
+        clientAva,
+        clientsNames,
+        nameSelectOptions,
+        searchClientsCheck;
+
+    selectClients = document.querySelector('select[name="forClient"]');
+    baseAvaSource = 'assets/images/';
+    clientAva = document.querySelector('.for-client-icon img');
+    clientsNames = [
+        'Тамара Смольнова',
+        'Мария Петрова'
+    ];
+    nameSelectOptions = '';
+    searchClientsCheck = document.querySelector('#client-seach');
+
+    clientAva.setAttribute('src', baseAvaSource + 'noava.png');
+
+    for(var i = 0; i<clientsNames.length; i++ ){
+      nameSelectOptions += '<option value="'+ i +'">' + clientsNames[i] + '</option>';
+    }
+    selectClients.innerHTML = nameSelectOptions;
+
+    selectClients.onchange = function(){
+      clientAva.setAttribute('src', baseAvaSource + 'ava_client_id_'+ this.value +'.png');
+    }
+
+    searchClientsCheck.onkeyup = function(){
+      for(var i = 0; i<clientsNames.length; i++ ){
+        if(clientsNames[i].match(new RegExp(this.value, 'i'))){
+          var search = 'option[value='+ '"'+i+'"' +']';
+          document.querySelector(search).setAttribute('selected','');
+          clientAva.setAttribute('src', baseAvaSource + 'ava_client_id_'+ i +'.png');
+        }
+      }
+    }
+
+  }
+
+
   //Make time selectors for form
   function makeTimeSelectors(data){
     var timeStart = document.querySelector('select[name="time-start"]'),
