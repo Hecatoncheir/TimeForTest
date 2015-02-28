@@ -6,7 +6,8 @@
       timeInterval,
       nowDate,
       popUpOutline,
-      popUpElement;
+      popUpElement,
+      navTabs;
 
       appBody = document.querySelector('#app'),
       timeTable = document.querySelector('#timeTable'),
@@ -184,7 +185,7 @@
     clientAva = document.querySelector('.for-client-icon img');
     clientsNames = [
         'Тамара Смольнова',
-        'Мария Петрова'
+        'Мария Непетрова'
     ];
     nameSelectOptions = '';
     searchClientsCheck = document.querySelector('#client-seach');
@@ -203,9 +204,14 @@
     searchClientsCheck.onkeyup = function(){
       for(var i = 0; i<clientsNames.length; i++ ){
         if(clientsNames[i].match(new RegExp(this.value, 'i'))){
+          navTabs[1].style.borderBottom = 'none';
+
           var search = 'option[value='+ '"'+i+'"' +']';
           document.querySelector(search).setAttribute('selected','');
           clientAva.setAttribute('src', baseAvaSource + 'ava_client_id_'+ i +'.png');
+
+        } else {
+          navTabs[1].style.borderBottom = '3px solid red';
         }
       }
     }
@@ -229,8 +235,7 @@
 
   //Navigation tabs
   function addNavigationTabsEvents() {
-    var navTabs,
-        navTabsArray,
+    var navTabsArray,
         tabs,
         tabsArray,
         siblingsClassToggle,
