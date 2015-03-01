@@ -157,13 +157,9 @@
     popUpOutline.style.display = 'block';
     popUpElement.style.display = 'block';
 
-    //console.log(eventData.dataset.hour);
-    //console.log(eventData.dataset.minutes);
-
     addNavigationTabsEvents();
     makeTimeSelectors(eventData);
     makeNamesOfClients();
-
 
     popUpOutline.onclick = function(event){
       this.style.display = 'none';
@@ -178,7 +174,9 @@
         clientAva,
         clientsNames,
         nameSelectOptions,
-        searchClientsCheck;
+        searchClientsCheck,
+        clientFirstNamePlace,
+        clientLastNamePlace;
 
     selectClients = document.querySelector('select[name="forClient"]');
     baseAvaSource = 'assets/images/';
@@ -190,6 +188,8 @@
     ];
     nameSelectOptions = '';
     searchClientsCheck = document.querySelector('#client-seach');
+    clientFirstNamePlace = document.querySelector('#client-first-name');
+    clientLastNamePlace = document.querySelector('#client-last-name');
 
     clientAva.setAttribute('src', baseAvaSource + 'noava.png');
 
@@ -213,6 +213,15 @@
           clientAva.onerror = function(){this.setAttribute('src', baseAvaSource+'noava.png');}
 
         } else {
+          var clientName;
+              clientName = this.value.split(' ');
+          if(clientName[0]){
+            clientFirstNamePlace.setAttribute('value',clientName[0]);
+          }
+          if(clientName[1]){
+            clientLastNamePlace.setAttribute('value',clientName[1]);
+          }
+
           navTabs[1].style.borderBottom = '3px solid red';
         }
       }
