@@ -185,6 +185,7 @@
     clientAva = document.querySelector('.for-client-icon img');
     clientsNames = [
         'Тамара Смольнова',
+        'Тамара Несмольнова',
         'Мария Непетрова'
     ];
     nameSelectOptions = '';
@@ -209,6 +210,7 @@
           var search = 'option[value='+ '"'+i+'"' +']';
           document.querySelector(search).setAttribute('selected','');
           clientAva.setAttribute('src', baseAvaSource + 'ava_client_id_'+ i +'.png');
+          clientAva.onerror = function(){this.setAttribute('src', baseAvaSource+'noava.png');}
 
         } else {
           navTabs[1].style.borderBottom = '3px solid red';
